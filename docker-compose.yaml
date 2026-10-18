@@ -2,7 +2,7 @@ services:
   # 1. Tu Base de Datos
   mongo:
     image: mongo:7
-    container_name: pokemones-api-mongo
+    container_name: pokemones-api-2c2026-mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: secret
@@ -14,7 +14,7 @@ services:
   # 2. Tu Backend (Node.js)
   api:
     build: . # Construye usando el Dockerfile de este directorio
-    container_name: pokemones-api-node
+    container_name: pokemones-api-2c2026-node
     ports:
       - "3000:3000"
     environment:

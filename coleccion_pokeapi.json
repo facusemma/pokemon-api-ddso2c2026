@@ -1,7 +1,6 @@
 {
   "info": {
-    "name": "PokeAPI UTN - Completa V2 (Final)",
-    "description": "Colección definitiva con Arquitectura Limpia. Incluye filtros planos, CRUD completo, gestión de equipos (agregar/quitar) y gestión de medallas.",
+    "name": "Pokemones API ddso2c2026",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [

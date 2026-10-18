@@ -1,4 +1,4 @@
-# ⚡ PokeAPI UTN - Clean Architecture REST API
+# ⚡ Pokemones API ddso2c2026
 
 Una API RESTful para la gestión de Entrenadores Pokémon, sus equipos y medallas. 
 
