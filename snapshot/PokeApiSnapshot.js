@@ -22,7 +22,7 @@ class PokeApiSnapshot {
   async refresh() {
     console.log('Obteniendo datos de la API externa...');
     try {
-      const list = await this.client.fetchBaseList(50);
+      const list = await this.client.fetchBaseList(151);
       const detailPromises = list.map(p => this.client.fetchDetail(p.url));
       const rawDetails = await Promise.all(detailPromises);
 

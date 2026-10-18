@@ -1,0 +1,32 @@
+services:
+  # 1. Tu Base de Datos
+  mongo:
+    image: mongo:7
+    container_name: pokemones-api-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db 
+
+  # 2. Tu Backend (Node.js)
+  api:
+    build: . # Construye usando el Dockerfile de este directorio
+    container_name: pokemones-api-node
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      # Sobreescribimos localhost por 'mongo' para que hable con el otro contenedor
+      - MONGODB_URI=mongodb://root:secret@mongo:27017
+      - MONGO_DB_NAME=ejemplo_busquedas
+    volumes:
+      # Sincronizamos la carpeta snapshot de Windows con la del contenedor
+      - ./snapshot:/app/snapshot
+    depends_on:
+      - mongo # Le dice a Docker que levante Mongo antes que la API
+
+volumes:
+  mongo_data:

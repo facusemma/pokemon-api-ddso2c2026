@@ -1,0 +1,264 @@
+{
+  "info": {
+    "name": "PokeAPI UTN - Completa V2 (Final)",
+    "description": "Colección definitiva con Arquitectura Limpia. Incluye filtros planos, CRUD completo, gestión de equipos (agregar/quitar) y gestión de medallas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Sistema",
+      "item": [
+        {
+          "name": "Healthcheck",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/healthcheck",
+              "host": ["{{baseUrl}}"],
+              "path": ["healthcheck"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Pokemones",
+      "item": [
+        {
+          "name": "Listar Pokemones (Paginado Básico)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/pokemones?page=1&limit=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pokemones"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "5" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtros Avanzados (Tipos y Stats Planas)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/pokemones?tipo=fuego&vidaMin=35&ataqueEspecialMax=100&page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pokemones"],
+              "query": [
+                { "key": "tipo", "value": "fuego" },
+                { "key": "vidaMin", "value": "35" },
+                { "key": "ataqueEspecialMax", "value": "100" },
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Pokémon por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/pokemones/4",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pokemones", "4"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Entrenadores",
+      "item": [
+        {
+          "name": "Obtener Entrenadores",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Entrenador por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR"]
+            }
+          }
+        },
+        {
+          "name": "Crear Entrenador",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Gary Oak\",\n  \"edad\": 10,\n  \"ciudad\": \"Pueblo Paleta\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores"]
+            }
+          }
+        },
+        {
+          "name": "Editar Entrenador",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ciudad\": \"Isla Canela\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Entrenador",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR"]
+            }
+          }
+        },
+        {
+          "name": "AGREGAR Pokémon al Equipo",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR/pokemones/4",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR", "pokemones", "4"]
+            }
+          }
+        },
+        {
+          "name": "QUITAR Pokémon del Equipo",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR/pokemones/4",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR", "pokemones", "4"]
+            }
+          }
+        },
+        {
+          "name": "OTORGAR Medalla a Entrenador",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR/medallas/ID_DE_LA_MEDALLA",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR", "medallas", "ID_DE_LA_MEDALLA"]
+            }
+          }
+        },
+        {
+          "name": "RETIRAR Medalla de Entrenador",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/entrenadores/ID_DEL_ENTRENADOR/medallas/ID_DE_LA_MEDALLA",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "entrenadores", "ID_DEL_ENTRENADOR", "medallas", "ID_DE_LA_MEDALLA"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Medallas",
+      "item": [
+        {
+          "name": "Obtener Medallas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/medallas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "medallas"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Medalla por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/medallas/ID_DE_LA_MEDALLA",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "medallas", "ID_DE_LA_MEDALLA"]
+            }
+          }
+        },
+        {
+          "name": "Crear Medalla",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Medalla Trueno\",\n  \"descripcion\": \"Otorgada por vencer a Lt. Surge en el gimnasio de Ciudad Carmín.\",\n  \"fechaYHoraObtencion\": \"2026-10-18T15:30:00Z\",\n  \"nombreJefe\": \"Lt. Surge\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/medallas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "medallas"]
+            }
+          }
+        },
+        {
+          "name": "Editar Medalla",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombreJefe\": \"Surge (Revancha)\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/medallas/ID_DE_LA_MEDALLA",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "medallas", "ID_DE_LA_MEDALLA"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Medalla",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/medallas/ID_DE_LA_MEDALLA",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "medallas", "ID_DE_LA_MEDALLA"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ export default class PokeApiClient {
     this.baseUrl = 'https://pokeapi.co/api/v2';
   }
 
-  async fetchBaseList(limit = 50) {
+  async fetchBaseList(limit = 151) {
     const response = await axios.get(`${this.baseUrl}/pokemon?limit=${limit}`);
     return response.data.results;
   }

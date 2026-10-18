@@ -8,7 +8,7 @@ export const ErrorHandler = (err, req, res, next) => {
 
     const timestamp = new Date().toISOString();
 
-    if (err instanceof ZodError) { //Error de zod + Solo devolvemos el primer error que tenga para no revelar datos al cliente
+    if (err instanceof ZodError) {
         const primerError = err.errors[0];
         const campo = primerError.path.join('.');
 
@@ -19,7 +19,7 @@ export const ErrorHandler = (err, req, res, next) => {
         });
     }
 
-    if (err instanceof AppError || err.status) { //Error de negocio, custom
+    if (err instanceof AppError || err.status) { 
         return res.status(err.statusCode || err.status).json({
             status: err.status,
             message: err.message,
